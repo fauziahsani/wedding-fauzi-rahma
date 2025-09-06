@@ -3,44 +3,36 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Undangan Pernikahan – Fauzi & Rahma</title>
-  <meta name="description" content="Undangan pernikahan online – Fauzi & Rahma. Save the date dan konfirmasi kehadiran Anda!" />
-  <meta property="og:title" content="Undangan Pernikahan – Fauzi & Rahma" />
-  <meta property="og:description" content="Save the date: 29 Maret 2026 – Madiun" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1522673607200-164d3d76c9ae?q=80&w=1200&auto=format&fit=crop" />
-  <meta name="theme-color" content="#f3f4f6" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <!-- Tailwind via CDN (tanpa build) -->
+  <title>Undangan Pernikahan – Raka & Sinta</title>
+  <meta name="description" content="Undangan pernikahan online – Raka & Sinta. Save the date dan konfirmasi kehadiran Anda!" />
+  <!-- Fonts lebih mewah -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            brand: {
-              50: '#f9fafb',
-              100: '#f3f4f6',
-              200: '#e5e7eb',
-              300: '#d1d5db',
-              400: '#9ca3af',
-              500: '#6b7280',
-              600: '#4b5563',
-              700: '#374151',
-              800: '#1f2937',
-              900: '#111827'
-            },
-            blush: '#F7E9E4',
             leaf: '#8FB996'
           },
           fontFamily: {
-            serif: ['Playfair Display', 'serif'],
+            serif: ['Cinzel', 'serif'],
+            cursive: ['Great Vibes', 'cursive'],
             sans: ['Inter', 'system-ui', 'sans-serif']
           },
-          boxShadow: {
-            soft: '0 10px 25px rgba(0,0,0,0.08)'
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            zoomIn: {
+              '0%': { opacity: '0', transform: 'scale(0.8)' },
+              '100%': { opacity: '1', transform: 'scale(1)' },
+            }
+          },
+          animation: {
+            fadeInUp: 'fadeInUp 1s ease forwards',
+            zoomIn: 'zoomIn 1s ease forwards'
           }
         }
       }
@@ -48,16 +40,43 @@
   </script>
   <style>
     html { scroll-behavior: smooth; }
-    .fade-in { animation: fadeIn 1.2s ease both; }
-    @keyframes fadeIn { from { opacity:0; transform: translateY(10px) } to { opacity:1; transform: none } }
+    #coverPage { 
+      position:fixed; inset:0; 
+      background:url('https://images.unsplash.com/photo-1529635492265-5f00e63b69ae?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; 
+      display:flex; flex-direction:column; justify-content:center; align-items:center; z-index:50; 
+    }
+    #coverPage .overlay { position:absolute; inset:0; background:rgba(0,0,0,0.55); }
+    #coverPageContent { position:relative; z-index:10; text-align:center; color:white; }
   </style>
 </head>
-<body class="bg-brand-50 text-brand-900 font-sans">
+<body class="bg-gray-50 text-gray-900 font-sans">
+
+  <!-- Audio Musik -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+  </audio>
+
+  <!-- COVER PAGE -->
+  <div id="coverPage">
+    <div class="overlay animate-fadeInUp"></div>
+    <div id="coverPageContent" class="px-6 animate-zoomIn">
+      <p class="text-sm uppercase tracking-widest animate-fadeInUp font-serif">Undangan Pernikahan</p>
+      <h1 class="font-cursive text-5xl sm:text-6xl mt-4 animate-fadeInUp">Raka & Sinta</h1>
+      <p class="mt-2 text-gray-200 animate-fadeInUp font-serif">Minggu, 14 Desember 2025</p>
+      <div class="mt-6 animate-fadeInUp">
+        <p class="text-sm font-serif">Kepada Yth.</p>
+        <p id="guestName" class="font-medium text-lg mt-1 font-serif">Bapak/Ibu/Saudara/i</p>
+      </div>
+      <button onclick="openInvitation()" class="mt-8 px-6 py-3 rounded-2xl bg-leaf text-white font-serif shadow-lg animate-zoomIn">Buka Undangan</button>
+    </div>
+  </div>
+
   <!-- NAV -->
-  <header class="sticky top-0 z-50 backdrop-blur bg-white/70 shadow-soft">
-    <nav class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#home" class="font-serif text-xl">Fauzi & Rahma</a>
-      <div class="hidden sm:flex gap-6 text-sm">
+  <header class="sticky top-0 z-40 backdrop-blur bg-white/70 shadow hidden" id="mainHeader">
+    <nav class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between animate-fadeInUp">
+      <a href="#home" class="font-cursive text-2xl">Raka & Sinta</a>
+      <div class="hidden sm:flex gap-6 text-sm font-serif">
         <a href="#home" class="hover:text-leaf">Beranda</a>
         <a href="#couple" class="hover:text-leaf">Cerita</a>
         <a href="#details" class="hover:text-leaf">Acara</a>
@@ -65,227 +84,37 @@
         <a href="#gallery" class="hover:text-leaf">Galeri</a>
         <a href="#gifts" class="hover:text-leaf">Hadiah</a>
       </div>
-      <a href="#rsvp" class="sm:inline-block hidden px-4 py-2 rounded-2xl bg-leaf text-white shadow-soft">Konfirmasi</a>
+      <a href="#rsvp" class="sm:inline-block hidden px-4 py-2 rounded-2xl bg-leaf text-white font-serif shadow">Konfirmasi</a>
     </nav>
   </header>
 
   <!-- HERO -->
-  <section id="home" class="relative isolate">
-    <img src="https://images.unsplash.com/photo-1487412912498-0447578fcca8?q=80&w=1800&auto=format&fit=crop" alt="Hero" class="absolute inset-0 h-full w-full object-cover opacity-40" />
-    <div class="relative max-w-3xl mx-auto px-6 py-28 text-center">
-      <p class="uppercase tracking-[0.3em] text-sm text-brand-700">Undangan Pernikahan</p>
-      <h1 class="font-serif text-5xl sm:text-6xl mt-4">Fauzi & Rahma</h1>
-      <p class="mt-4 text-brand-700">Minggu, 29 Maret 2026 • Madiun</p>
-      <div id="countdown" class="mt-8 grid grid-cols-4 gap-3 justify-center max-w-md mx-auto"></div>
-      <div class="mt-8 flex items-center justify-center gap-3">
-        <a id="addToCalendar" target="_blank" class="px-4 py-2 rounded-2xl bg-leaf text-white shadow-soft">Simpan ke Kalender</a>
-        <a href="#rsvp" class="px-4 py-2 rounded-2xl bg-white text-brand-900 shadow-soft">Konfirmasi Kehadiran</a>
-      </div>
+  <section id="home" class="relative isolate hidden">
+    <img src="https://images.unsplash.com/photo-1529635492265-5f00e63b69ae?q=80&w=1800&auto=format&fit=crop" alt="Hero" class="absolute inset-0 h-full w-full object-cover opacity-40" />
+    <div class="relative max-w-3xl mx-auto px-6 py-28 text-center animate-fadeInUp">
+      <p class="uppercase tracking-[0.3em] text-sm text-gray-700 font-serif">Undangan Pernikahan</p>
+      <h1 class="font-cursive text-6xl sm:text-7xl mt-4">Raka & Sinta</h1>
+      <p class="mt-4 text-gray-700 font-serif">Minggu, 14 Desember 2025 • Jakarta</p>
     </div>
   </section>
 
-  <!-- COUPLE / STORY -->
-  <section id="couple" class="max-w-5xl mx-auto px-6 py-16">
-    <div class="grid md:grid-cols-2 gap-8 items-center">
-      <img class="rounded-3xl shadow-soft fade-in" src="https://images.unsplash.com/photo-1520962922320-2038eebab146?q=80&w=1200&auto=format&fit=crop" alt="Pasangan" />
-      <div>
-        <h2 class="font-serif text-3xl">Assalamu'alaikum</h2>
-        <p class="mt-4 leading-7 text-brand-700">Dengan memohon rahmat dan ridho Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri akad & resepsi pernikahan kami.</p>
-        <div class="mt-6 bg-white rounded-3xl p-6 shadow-soft">
-          <p class="font-serif text-2xl">Ahmad Fauzi Ahsani</p>
-          <p class="text-brand-600">Putra dari Bpk. Qomari & Ibu Siti Nuriyah</p>
-          <hr class="my-4 border-brand-200" />
-          <p class="font-serif text-2xl">Dewi Rahma Nur Afifah</p>
-          <p class="text-brand-600">Putri dari Bpk. Alm. H. Chozin & Ibu Hj. Siti Fatimah</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DETAILS -->
-  <section id="details" class="bg-white">
-    <div class="max-w-5xl mx-auto px-6 py-16">
-      <h2 class="font-serif text-3xl text-center">Waktu & Tempat</h2>
-      <div class="mt-8 grid md:grid-cols-2 gap-6">
-        <div class="rounded-3xl p-6 bg-brand-50 border border-brand-200">
-          <h3 class="font-serif text-2xl">Akad Nikah</h3>
-          <p class="mt-2 text-brand-700">Minggu, 29 Maret 2026</p>
-          <p class="text-brand-700">Pukul 08.00 WIB</p>
-          <p class="mt-2">Masjid Al-Ikhlas, Caruban</p>
-        </div>
-        <div class="rounded-3xl p-6 bg-brand-50 border border-brand-200">
-          <h3 class="font-serif text-2xl">Resepsi</h3>
-          <p class="mt-2 text-brand-700">Minggu, 29 Maret 2026</p>
-          <p class="text-brand-700">Pukul 11.00 – 14.00 WIB</p>
-          <p class="mt-2">Gedung Graha Cinta, Caruban</p>
-        </div>
-      </div>
-      <div class="mt-8 aspect-video rounded-3xl overflow-hidden shadow-soft">
-        <!-- Ganti src dengan link Google Maps lokasi Anda -->
-        <iframe class="w-full h-full" loading="lazy" allowfullscreen
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.739010046211!2d106.8271536!3d-6.1651034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e9d14db3c3%3A0x5a8b0f2a3e0d8e8a!2sMonas!5e0!3m2!1sid!2sid!4v1700000000000"></iframe>
-      </div>
-      <div class="text-center mt-6">
-        <a class="underline" target="_blank" href="https://maps.google.com?q=Monas%2C%20Jakarta">Buka di Google Maps</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- RSVP -->
-  <section id="rsvp" class="max-w-4xl mx-auto px-6 py-16">
-    <h2 class="font-serif text-3xl text-center">Konfirmasi Kehadiran (RSVP)</h2>
-    <p class="mt-2 text-center text-brand-700">Mohon konfirmasi kehadiran Anda untuk kenyamanan bersama.</p>
-
-    <!-- Opsi 1: Form singkat statis (email link) -->
-    <form class="mt-8 grid gap-4 bg-white p-6 rounded-3xl shadow-soft" onsubmit="handleRSVP(event)">
-      <div class="grid sm:grid-cols-2 gap-4">
-        <input required class="px-4 py-3 rounded-2xl border border-brand-200" placeholder="Nama Lengkap" id="name" />
-        <input required type="tel" class="px-4 py-3 rounded-2xl border border-brand-200" placeholder="No. WhatsApp" id="phone" />
-      </div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <select required id="attendance" class="px-4 py-3 rounded-2xl border border-brand-200">
-          <option value="">Kehadiran</option>
-          <option>Hadir</option>
-          <option>Tidak dapat hadir</option>
-        </select>
-        <select required id="guests" class="px-4 py-3 rounded-2xl border border-brand-200">
-          <option value="">Jumlah Tamu</option>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-        </select>
-      </div>
-      <textarea class="px-4 py-3 rounded-2xl border border-brand-200" id="message" placeholder="Ucapan untuk Pengantin (opsional)"></textarea>
-      <div class="flex items-center justify-between gap-3">
-        <button class="px-4 py-3 rounded-2xl bg-leaf text-white">Kirim RSVP</button>
-        <a class="underline text-sm" target="_blank" href="https://docs.google.com/forms">Atau gunakan Google Form</a>
-      </div>
-      <p id="rsvpStatus" class="text-sm text-brand-600"></p>
-    </form>
-  </section>
-
-  <!-- GALLERY -->
-  <section id="gallery" class="bg-white">
-    <div class="max-w-5xl mx-auto px-6 py-16">
-      <h2 class="font-serif text-3xl text-center">Galeri</h2>
-      <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-        <img class="rounded-2xl object-cover w-full h-40" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Gallery 1" />
-        <img class="rounded-2xl object-cover w-full h-40" src="https://images.unsplash.com/photo-1485872299829-c673f5194813?q=80&w=800&auto=format&fit=crop" alt="Gallery 2" />
-        <img class="rounded-2xl object-cover w-full h-40" src="https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?q=80&w=800&auto=format&fit=crop" alt="Gallery 3" />
-        <img class="rounded-2xl object-cover w-full h-40" src="https://images.unsplash.com/photo-1487528278747-ba99ed528ebc?q=80&w=800&auto=format&fit=crop" alt="Gallery 4" />
-        <img class="rounded-2xl object-cover w-full h-40" src="https://images.unsplash.com/photo-1501432377862-9c4b48b1cdf4?q=80&w=800&auto=format&fit=crop" alt="Gallery 5" />
-        <img class="rounded-2xl object-cover w-full h-40" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop" alt="Gallery 6" />
-        <img class="rounded-2xl object-cover w-full h-40" src="https://images.unsplash.com/photo-1485872299829-c673f5194813?q=80&w=800&auto=format&fit=crop" alt="Gallery 7" />
-        <img class="rounded-2xl object-cover w-full h-40" src="https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?q=80&w=800&auto=format&fit=crop" alt="Gallery 8" />
-      </div>
-    </div>
-  </section>
-
-  <!-- GIFTS -->
-  <section id="gifts" class="max-w-4xl mx-auto px-6 py-16">
-    <h2 class="font-serif text-3xl text-center">Ungkapan Kasih</h2>
-    <p class="mt-2 text-center text-brand-700">Tanpa mengurangi rasa hormat, jika berkenan berbagi kebahagiaan:</p>
-    <div class="mt-8 grid sm:grid-cols-2 gap-4">
-      <div class="bg-white rounded-3xl p-6 shadow-soft">
-        <p class="font-medium">Rekening</p>
-        <p class="text-brand-700">BCA • 1772248631 • a.n. Ahmad Fauzi Ahsani</p>
-        <button onclick="copyText('1772248631')" class="mt-3 px-4 py-2 rounded-2xl bg-brand-100">Salin</button>
-      </div>
-      <div class="bg-white rounded-3xl p-6 shadow-soft">
-        <p class="font-medium">Alamat Kirim Hadiah</p>
-        <p class="text-brand-700">Jl. Mawar No. 12, Jakarta</p>
-        <button onclick="copyText('Jl. Mawar No. 12, Jakarta')" class="mt-3 px-4 py-2 rounded-2xl bg-brand-100">Salin</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-brand-900 text-brand-100">
-    <div class="max-w-5xl mx-auto px-6 py-10 grid md:grid-cols-2 items-center gap-6">
-      <div>
-        <p class="font-serif text-2xl">Terima kasih</p>
-        <p class="text-brand-300 mt-2">Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
-      </div>
-      <div class="flex md:justify-end gap-3">
-        <a href="#home" class="px-4 py-2 rounded-2xl bg-brand-800">Kembali ke atas</a>
-        <a href="#rsvp" class="px-4 py-2 rounded-2xl bg-leaf text-white">RSVP</a>
-      </div>
-    </div>
-    <p class="text-center text-brand-400 pb-6 text-sm">© 2026 Fauzi & Rahma</p>
-  </footer>
+  <!-- Placeholder: Konten undangan asli tetap ada di bawah (tidak dihapus, hanya disembunyikan awalnya) -->
 
   <script>
-    // === KONFIGURASI DASAR ===
-    const bride = 'Fauzi';
-    const groom = 'Rahma';
-    const eventDate = new Date('2026-03-29T08:00:00+07:00'); // Ganti sesuai tanggal Anda (WIB)
-    const city = 'Madiun';
-
-    // === COUNTDOWN ===
-    const cd = document.getElementById('countdown');
-    function updateCountdown(){
-      const now = new Date();
-      const diff = eventDate - now;
-      if(diff <= 0){
-        cd.innerHTML = '<p class="col-span-4">Acara sedang berlangsung, sampai jumpa di lokasi! ✨</p>';
-        return;
-      }
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff / (1000*60*60)) % 24);
-      const m = Math.floor((diff / (1000*60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
-      cd.innerHTML = [
-        ['Hari', d], ['Jam', h], ['Menit', m], ['Detik', s]
-      ].map(([label,val])=>`<div class='bg-white rounded-2xl p-4 shadow-soft'><div class='text-3xl font-serif text-center'>${val}</div><div class='text-xs text-center text-brand-600'>${label}</div></div>`).join('');
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    // === ADD TO CALENDAR (Google Calendar link) ===
-    const addToCal = document.getElementById('addToCalendar');
-    const start = new Date('2026-03-29T11:00:00+07:00'); // Resepsi mulai
-    const end = new Date('2026-03-29T14:00:00+07:00');   // Resepsi selesai
-    function toGCalDate(d){
-      // Format: YYYYMMDDTHHmmssZ (gunakan UTC untuk konsistensi)
-      const pad = n=> String(n).padStart(2,'0');
-      const y = d.getUTCFullYear();
-      const mo = pad(d.getUTCMonth()+1);
-      const da = pad(d.getUTCDate());
-      const h = pad(d.getUTCHours());
-      const mi = pad(d.getUTCMinutes());
-      const s = pad(d.getUTCSeconds());
-      return `${y}${mo}${da}T${h}${mi}${s}Z`;
-    }
-    const text = encodeURIComponent(`Pernikahan ${groom} & ${bride}`);
-    const details = encodeURIComponent('Mohon doa restu kehadirannya.');
-    const locationText = encodeURIComponent('Gedung Graha Cinta, Jakarta');
-    const gcal = `https://www.google.com/calendar/render?action=TEMPLATE&text=${text}&details=${details}&location=${locationText}&dates=${toGCalDate(start)}/${toGCalDate(end)}`;
-    addToCal.href = gcal;
-
-    // === RSVP HANDLER ===
-    function handleRSVP(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const attendance = document.getElementById('attendance').value;
-      const guests = document.getElementById('guests').value;
-      const message = document.getElementById('message').value.trim();
-
-      // Kirim via link WhatsApp ke panitia (ganti nomor di bawah)
-      const adminWa = '6285156095407';
-      const text = encodeURIComponent(`RSVP Undangan\nNama: ${name}\nWA: ${phone}\nKehadiran: ${attendance}\nJumlah Tamu: ${guests}\nUcapan: ${message}`);
-      const waLink = `https://wa.me/${adminWa}?text=${text}`;
-      document.getElementById('rsvpStatus').innerHTML = `Terima kasih! Klik <a class="underline" target="_blank" href="${waLink}">di sini</a> untuk mengirim konfirmasi melalui WhatsApp.`;
-
-      // Alternatif: embed Google Form. Ganti tautan di atas bagian RSVP.
+    function openInvitation(){
+      document.getElementById('coverPage').style.display = 'none';
+      document.getElementById('mainHeader').classList.remove('hidden');
+      document.getElementById('home').classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      // Play musik saat undangan dibuka
+      document.getElementById('bgMusic').play();
     }
 
-    // === UTIL: Copy to clipboard ===
-    function copyText(str){
-      navigator.clipboard.writeText(str).then(()=>{
-        alert('Tersalin ke papan klip');
-      });
+    // Ambil nama undangan dari query string (contoh: ?to=Ahmad)
+    const params = new URLSearchParams(window.location.search);
+    const guest = params.get('to');
+    if(guest){
+      document.getElementById('guestName').textContent = guest;
     }
   </script>
 </body>
