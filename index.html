@@ -5,16 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Undangan Pernikahan – Raka & Sinta</title>
   <meta name="description" content="Undangan pernikahan online – Raka & Sinta. Save the date dan konfirmasi kehadiran Anda!" />
-  <!-- Fonts lebih mewah -->
+  <!-- Fonts mewah -->
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            leaf: '#8FB996'
-          },
+          colors: { leaf: '#8FB996' },
           fontFamily: {
             serif: ['Cinzel', 'serif'],
             cursive: ['Great Vibes', 'cursive'],
@@ -23,11 +21,11 @@
           keyframes: {
             fadeInUp: {
               '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
             },
             zoomIn: {
               '0%': { opacity: '0', transform: 'scale(0.8)' },
-              '100%': { opacity: '1', transform: 'scale(1)' },
+              '100%': { opacity: '1', transform: 'scale(1)' }
             }
           },
           animation: {
@@ -98,7 +96,61 @@
     </div>
   </section>
 
-  <!-- Placeholder: Konten undangan asli tetap ada di bawah (tidak dihapus, hanya disembunyikan awalnya) -->
+  <!-- COUPLE STORY -->
+  <section id="couple" class="max-w-4xl mx-auto px-6 py-16 text-center">
+    <h2 class="font-serif text-3xl mb-6">Kisah Kami</h2>
+    <p class="text-gray-600 leading-relaxed">Perjalanan cinta kami dimulai dari sebuah pertemuan sederhana dan tumbuh menjadi ikatan yang kuat. Kami percaya bahwa cinta ini adalah anugerah, dan dengan penuh syukur kami ingin berbagi kebahagiaan ini bersama Anda.</p>
+  </section>
+
+  <!-- WEDDING DETAILS -->
+  <section id="details" class="bg-white py-16">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="font-serif text-3xl mb-6">Waktu & Tempat</h2>
+      <p class="text-gray-600">Akad Nikah: Minggu, 14 Desember 2025 • 09.00 WIB</p>
+      <p class="text-gray-600">Resepsi: Minggu, 14 Desember 2025 • 11.00 WIB - 14.00 WIB</p>
+      <p class="text-gray-600 mt-4">Gedung Serbaguna Cinta Abadi, Jakarta</p>
+      <div class="mt-6">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.799!2d110.366!3d-7.801!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a579bd!2sGedung+Pernikahan!5e0!3m2!1sid!2sid!4v1610000000000" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" class="max-w-3xl mx-auto px-6 py-16 text-center">
+    <h2 class="font-serif text-3xl mb-6">Konfirmasi Kehadiran</h2>
+    <p class="text-gray-600">Silakan konfirmasi kehadiran Anda melalui tombol di bawah ini:</p>
+    <a href="https://wa.me/6281234567890?text=Halo%2C+saya+akan+hadir+di+pernikahan+Raka+%26+Sinta" target="_blank" class="inline-block mt-6 px-6 py-3 rounded-2xl bg-leaf text-white font-serif shadow">Konfirmasi via WhatsApp</a>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="bg-gray-100 py-16">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h2 class="font-serif text-3xl mb-10">Galeri</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        <img src="https://source.unsplash.com/400x400/?wedding,couple" class="rounded-lg shadow" alt="galeri" />
+        <img src="https://source.unsplash.com/400x400/?love" class="rounded-lg shadow" alt="galeri" />
+        <img src="https://source.unsplash.com/400x400/?romantic" class="rounded-lg shadow" alt="galeri" />
+        <img src="https://source.unsplash.com/400x400/?flowers" class="rounded-lg shadow" alt="galeri" />
+        <img src="https://source.unsplash.com/400x400/?rings" class="rounded-lg shadow" alt="galeri" />
+        <img src="https://source.unsplash.com/400x400/?bride,groom" class="rounded-lg shadow" alt="galeri" />
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFTS -->
+  <section id="gifts" class="max-w-3xl mx-auto px-6 py-16 text-center">
+    <h2 class="font-serif text-3xl mb-6">Ungkapan Kasih</h2>
+    <p class="text-gray-600">Doa restu Anda merupakan hadiah terindah bagi kami. Namun jika ingin memberikan tanda kasih, dapat dikirimkan melalui rekening berikut:</p>
+    <div class="mt-6">
+      <p class="font-serif">BCA 1234567890 a.n. Raka</p>
+      <p class="font-serif">Mandiri 9876543210 a.n. Sinta</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-leaf text-white text-center py-6 font-serif">
+    <p>© 2025 Raka & Sinta. Dengan cinta, kami tunggu kehadiran Anda.</p>
+  </footer>
 
   <script>
     function openInvitation(){
@@ -106,11 +158,9 @@
       document.getElementById('mainHeader').classList.remove('hidden');
       document.getElementById('home').classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      // Play musik saat undangan dibuka
       document.getElementById('bgMusic').play();
     }
 
-    // Ambil nama undangan dari query string (contoh: ?to=Ahmad)
     const params = new URLSearchParams(window.location.search);
     const guest = params.get('to');
     if(guest){
